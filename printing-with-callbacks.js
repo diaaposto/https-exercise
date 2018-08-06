@@ -1,6 +1,6 @@
 let https = require('https');
 
-function getAndPrintHTML (options) {
+function getHTML (options, callback) {
 
   https.get(options, function (response) {
     let bufferedData = '';
@@ -19,17 +19,13 @@ function getAndPrintHTML (options) {
   })
 }
 
-var options = {
+function printHTML (html) {
+  console.log(html);
+}
+
+var requestOptions = {
   host: 'sytantris.github.io',
-  path: '/http-examples/step3.html'
+  path: '/http-examples/step4.html'
 };
 
-
-getAndPrintHTML(options);
-
-//you can pass in a url as a parameter
-//try to find which part is path which is host, create obj from that
-//you can pass it as a command line argument and then parse the url
-//for the options obj
-
-//you need it to be passed in as an object with a host and a path
+getHTML(requestOptions, printHTML);
