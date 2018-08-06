@@ -23,6 +23,9 @@ function getAndPrintHTML () {
     path: '/http-examples/step2.html'
   };
 
+  //get calls function (response) once it gets the thing (data) - call to it, like facebook.com - the callback runs
+  //declare an empty string - because data doesn't come in a JSON object
+
   https.get(requestOptions, function (response) {
     let bufferedData = '';
 
@@ -30,11 +33,9 @@ function getAndPrintHTML () {
 
     response.on('data', function (data) {
       bufferedData += data;
-
     });
 
     response.on('end', function() {
-      //print the stuff when it's all done - response.on(end) only happens when it's all over
       console.log(bufferedData);
 
       console.log('Response stream complete.')
